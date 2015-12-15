@@ -16,6 +16,9 @@
 		90A0F13F1C1A71E000D1B2FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A0F13D1C1A71E000D1B2FD /* LaunchScreen.storyboard */; };
 		90A0F14A1C1A71E000D1B2FD /* XJMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A0F1491C1A71E000D1B2FD /* XJMessageTests.m */; };
 		90A0F1551C1A71E000D1B2FD /* XJMessageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A0F1541C1A71E000D1B2FD /* XJMessageUITests.m */; };
+		90A0F1651C1A722C00D1B2FD /* XJMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A0F1641C1A722C00D1B2FD /* XJMessage.m */; };
+		90A0F1681C1A744300D1B2FD /* XJMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A0F1671C1A744300D1B2FD /* XJMessageManager.m */; };
+		90E3278C1C1AD397003A6BCB /* XJMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E3278B1C1AD397003A6BCB /* XJMessageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,12 @@
 		90A0F1501C1A71E000D1B2FD /* XJMessageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XJMessageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A0F1541C1A71E000D1B2FD /* XJMessageUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJMessageUITests.m; sourceTree = "<group>"; };
 		90A0F1561C1A71E000D1B2FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90A0F1631C1A722C00D1B2FD /* XJMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJMessage.h; sourceTree = "<group>"; };
+		90A0F1641C1A722C00D1B2FD /* XJMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJMessage.m; sourceTree = "<group>"; };
+		90A0F1661C1A744300D1B2FD /* XJMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJMessageManager.h; sourceTree = "<group>"; };
+		90A0F1671C1A744300D1B2FD /* XJMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJMessageManager.m; sourceTree = "<group>"; };
+		90E3278A1C1AD397003A6BCB /* XJMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJMessageViewController.h; sourceTree = "<group>"; };
+		90E3278B1C1AD397003A6BCB /* XJMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJMessageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +112,7 @@
 		90A0F12B1C1A71E000D1B2FD /* XJMessage */ = {
 			isa = PBXGroup;
 			children = (
+				90A0F1621C1A720500D1B2FD /* XJMessage */,
 				90A0F12F1C1A71E000D1B2FD /* AppDelegate.h */,
 				90A0F1301C1A71E000D1B2FD /* AppDelegate.m */,
 				90A0F1321C1A71E000D1B2FD /* ViewController.h */,
@@ -141,6 +151,19 @@
 				90A0F1561C1A71E000D1B2FD /* Info.plist */,
 			);
 			path = XJMessageUITests;
+			sourceTree = "<group>";
+		};
+		90A0F1621C1A720500D1B2FD /* XJMessage */ = {
+			isa = PBXGroup;
+			children = (
+				90A0F1631C1A722C00D1B2FD /* XJMessage.h */,
+				90A0F1641C1A722C00D1B2FD /* XJMessage.m */,
+				90A0F1661C1A744300D1B2FD /* XJMessageManager.h */,
+				90A0F1671C1A744300D1B2FD /* XJMessageManager.m */,
+				90E3278A1C1AD397003A6BCB /* XJMessageViewController.h */,
+				90E3278B1C1AD397003A6BCB /* XJMessageViewController.m */,
+			);
+			path = XJMessage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +299,10 @@
 				90A0F1341C1A71E000D1B2FD /* ViewController.m in Sources */,
 				90A0F13A1C1A71E000D1B2FD /* XJMessage.xcdatamodeld in Sources */,
 				90A0F1311C1A71E000D1B2FD /* AppDelegate.m in Sources */,
+				90A0F1681C1A744300D1B2FD /* XJMessageManager.m in Sources */,
+				90A0F1651C1A722C00D1B2FD /* XJMessage.m in Sources */,
 				90A0F12E1C1A71E000D1B2FD /* main.m in Sources */,
+				90E3278C1C1AD397003A6BCB /* XJMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +526,7 @@
 				90A0F15B1C1A71E000D1B2FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		90A0F15C1C1A71E000D1B2FD /* Build configuration list for PBXNativeTarget "XJMessageTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +535,7 @@
 				90A0F15E1C1A71E000D1B2FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		90A0F15F1C1A71E000D1B2FD /* Build configuration list for PBXNativeTarget "XJMessageUITests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +544,7 @@
 				90A0F1611C1A71E000D1B2FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
