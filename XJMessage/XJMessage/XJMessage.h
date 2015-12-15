@@ -12,6 +12,8 @@
 
 @property (nonatomic, getter=isMessageCompleted) BOOL messageCompleted;
 
+- (void)createView;
+
 + (void)showMessageWithTitle:(NSString *)title
                     subtitle:(NSString *)subtitle;
 

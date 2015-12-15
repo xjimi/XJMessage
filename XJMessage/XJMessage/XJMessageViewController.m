@@ -11,7 +11,14 @@
 
 @implementation XJMessageViewController
 
-- (void)hideAlertWithCompletion:(void(^)(void))completion
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self createMessageView];
+}
+
+- (void)hideMessageWithCompletion:(void(^)(void))completion
 {
     self.messageView.messageCompleted = NO;
     
@@ -32,6 +39,28 @@
         self.messageView.transform = CGAffineTransformMakeScale(1, 1);
     }];
 }
+
+- (void)createMessageView
+{
+    [self.messageView createView];
+    [self.view addSubview:self.messageView];
+}
+
+- (void)showMessage
+{
+    self.messageView.messageCompleted = NO;
+    
+    NSLog(@"showMessage");
+
+    self.messageView.alpha = 0;
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        self.messageView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        self.messageView.messageCompleted = YES;
+    }];
+
+}
+
 
 
 @end

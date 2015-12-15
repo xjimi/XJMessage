@@ -9,10 +9,23 @@
 #import <UIKit/UIKit.h>
 #import "XJMessage.h"
 
+@class XJMessageViewController;
+
+@protocol XJMessageViewControllerDelegate <NSObject>
+
+@optional
+- (void)messageViewBackgroundTouched;
+
+@end
+
 @interface XJMessageViewController : UIViewController
 
 @property (nonatomic, weak) XJMessage *messageView;
+@property (nonatomic, weak) id < XJMessageViewControllerDelegate > delegate;
 
-- (void)hideAlertWithCompletion:(void(^)(void))completion;
+
+- (void)showMessage;
+
+- (void)hideMessageWithCompletion:(void(^)(void))completion;
 
 @end

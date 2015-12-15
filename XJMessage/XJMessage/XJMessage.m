@@ -10,7 +10,7 @@
 #import "XJMessageManager.h"
 #import "XJMessageViewController.h"
 
-@interface XJMessage ()
+@interface XJMessage () < XJMessageViewControllerDelegate >
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
@@ -46,22 +46,54 @@
         showingMessage = [XJMessageManager sharedInstance].messageQueue[index - 1];
     }
     
-    if (showingMessage && showingMessage.vc) {
-        if (showingMessage.isMessageCompleted) {
-            [showingMessage.vc hideAlertWithCompletion:^{
-                [self showMessageHandle];
+    if (showingMessage && showingMessage.vc)
+    {
+        if (showingMessage.isMessageCompleted)
+        {
+            __weak typeof(self)weakSelf = self;
+            [showingMessage.vc hideMessageWithCompletion:^{
+                [weakSelf showMessageHandle];
             }];
-        } else {
+        }
+        else
+        {
             [self showMessageHandle];
         }
-    } else {
+    }
+    else
+    {
         [self showMessageHandle];
     }
 }
 
 - (void)showMessageHandle
 {
+    UIWindow *keywindow = [UIApplication sharedApplication].keyWindow;
+    if (keywindow != [XJMessageManager sharedInstance].presentWindow) {
+        [XJMessageManager sharedInstance].mainWindow = [UIApplication sharedApplication].keyWindow;
+    }
     
+    XJMessageViewController *vc = [[XJMessageViewController alloc] init];
+    vc.delegate = self;
+    vc.messageView = self;
+    self.vc = vc;
+    
+    [XJMessageManager sharedInstance].presentWindow.frame = [UIScreen mainScreen].bounds;
+    [[XJMessageManager sharedInstance].presentWindow makeKeyAndVisible];
+    [XJMessageManager sharedInstance].presentWindow.rootViewController = self.vc;
+    
+    [self.vc showMessage];
 }
+
+- (void)createView
+{
+    if (self.subviews.count > 0) return;
+    NSLog(@"%f", self.frame.size.width);
+    UIView *messageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    messageView.backgroundColor = [UIColor blackColor];
+    [self addSubview:messageView];
+}
+
+
 
 @end
