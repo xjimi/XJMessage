@@ -75,10 +75,10 @@
     
     XJMessageViewController *vc = [[XJMessageViewController alloc] init];
     vc.delegate = self;
-    vc.messageView = self;
+    vc.message = self;
     self.vc = vc;
     
-    [XJMessageManager sharedInstance].presentWindow.frame = [UIScreen mainScreen].bounds;
+    [XJMessageManager sharedInstance].presentWindow.frame = CGRectMake(0, 0, PortraitW, PortraitH);
     [[XJMessageManager sharedInstance].presentWindow makeKeyAndVisible];
     [XJMessageManager sharedInstance].presentWindow.rootViewController = self.vc;
     
@@ -88,12 +88,48 @@
 - (void)createView
 {
     if (self.subviews.count > 0) return;
-    NSLog(@"%f", self.frame.size.width);
-    UIView *messageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    messageView.backgroundColor = [UIColor blackColor];
-    [self addSubview:messageView];
+    self.frame = CGRectMake(0, PortraitH, PortraitW, 100);
+    self.backgroundColor = [UIColor blackColor];
 }
 
+- (void)messageViewBackgroundTouched
+{
+    [self dismissAlertWithCompletion:^{
+        
+    }];
+}
 
+- (void)dismissAlertWithCompletion:(void(^)(void))completion
+{
+    [self.vc hideMessageWithCompletion:^{
+        
+        [self stackHandle];
+        
+        if (completion) completion();
+        
+        
+        NSInteger count = [XJMessageManager sharedInstance].messageQueue.count;
+        if (count > 0) {
+            XJMessage *lastMessage = [XJMessageManager sharedInstance].messageQueue.lastObject;
+            [lastMessage showMessage];
+        }
+    }];
+}
+
+- (void)stackHandle
+{
+    [[XJMessageManager sharedInstance].messageQueue removeObject:self];
+    
+    NSInteger count = [XJMessageManager sharedInstance].messageQueue.count;
+    if (count == 0) {
+        [self toggleKeyWindow];
+    }
+}
+
+- (void)toggleKeyWindow{
+    [[XJMessageManager sharedInstance].mainWindow makeKeyAndVisible];
+    [XJMessageManager sharedInstance].presentWindow.rootViewController = nil;
+    [XJMessageManager sharedInstance].presentWindow.frame = CGRectZero;
+}
 
 @end

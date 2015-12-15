@@ -20,7 +20,7 @@
 
 @interface XJMessageViewController : UIViewController
 
-@property (nonatomic, weak) XJMessage *messageView;
+@property (nonatomic, weak) XJMessage *message;
 @property (nonatomic, weak) id < XJMessageViewControllerDelegate > delegate;
 
 

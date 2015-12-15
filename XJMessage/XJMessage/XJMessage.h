@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define PortraitW MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)
+#define PortraitH MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)
+
 @interface XJMessage : UIView
 
 @property (nonatomic, getter=isMessageCompleted) BOOL messageCompleted;

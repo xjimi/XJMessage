@@ -17,4 +17,6 @@
 
 + (instancetype)sharedInstance;
 
++ (instancetype)showViewController:(UIViewController *)viewController;
+
 @end

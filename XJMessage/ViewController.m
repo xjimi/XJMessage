@@ -18,7 +18,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
     [XJMessage showMessageWithTitle:@"title" subtitle:@"subtitle"];
 }
 
